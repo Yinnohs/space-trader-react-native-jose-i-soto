@@ -1,0 +1,1 @@
+export {getUserinformation} from './spaceTraders'
