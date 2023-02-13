@@ -1,1 +1,1 @@
-export {addToken} from './storage'
+export {addToken, addUser,checkFreshStart,freshStart,getUsers} from './storage'
