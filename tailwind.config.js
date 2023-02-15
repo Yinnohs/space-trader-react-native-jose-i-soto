@@ -9,13 +9,20 @@ module.exports = {
             android: "platformColor(?android:colorError)",
             default: "red",
           },
-          back:"#000211",
-          fourth:"#1C1240",
-          primary:"#5B2855",
-          secondary:"#BE7B82",
-          third: "#6C3A6E",
+          p:{
+            1:'#3a015c',
+            2:'#32004f',
+            3:'#220135',
+            4:'#190028',
+            5:'#11001c'
+          },
+          primary:"#1F2937",
+          secondary:"#D97706",
+          third: "#F9FAFB",
           textp:"#FFF",
-          texts:"#cfcfcf"
+          texts:"#cfcfcf",
+          warning: "#b03000",
+          pass: "#39a845"
         }
       },
     },

@@ -1,4 +1,5 @@
 export { HomeScreen } from './HomeScreen'
-export { LoginScreen } from './LoginScreen'
+export * from './Login'
 export { ProfileScreen } from './ProfileScreen'
-export { RegisterScreen } from './RegisterScreen'
+export * from './Register'
+export { AuthScreen } from './AuthScreen'
