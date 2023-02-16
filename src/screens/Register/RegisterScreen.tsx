@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import {View,Text, Pressable, ImageBackground} from 'react-native'
 import { InputText } from '../../components';
 import { AppContext } from '../../context';
-import { addUser } from '../../storage';
+import { addUser, getUsers } from '../../storage';
 import { StackRoutes } from '../../types';
 import { register } from './register.utils';
 
@@ -20,11 +20,15 @@ export const RegisterScreen = (props:Props) => {
     const {data,set} = useContext(AppContext)
 
    const handleRegister = async ()=>{
-    const isTokenAdded  = await register(username)
+    const userData  = await register(username)
     const isUserAdded = await addUser(username)
-
-    if(isTokenAdded && isUserAdded){
-      set({...data, isLogged:true})
+    const users = await getUsers()
+    if(userData && isUserAdded){
+      set({users: users,
+          isLogged:true, 
+          userToken: userData.token, 
+          currentUser:userData.user.username
+        })
       navigation.navigate('Home')
     }
     setIsLoading(false)

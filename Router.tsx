@@ -2,7 +2,7 @@
 import {NavigationContainer} from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { AuthScreen} from './src/screens';
-import { AppContext } from './src/context';
+import { AppContext, UserProvider } from './src/context';
 import { useContext } from 'react';
 
 
@@ -19,17 +19,19 @@ export  function Router() {
         data.isLogged === true
         ?(
             <>
-                <Drawer.Screen
-                name='Home'
-                // @ts-ignore
-                getComponent={()=> require('./src/screens').HomeScreen}
-                options={{headerTitle:"",}}
-                />
-                <Drawer.Screen
-                name='Profile'
-                getComponent={()=> require('./src/screens').ProfileScreen}
-                options={{headerTitle:""}}
-                />
+                <UserProvider>
+                    <Drawer.Screen
+                    name='Home'
+                    // @ts-ignore
+                    getComponent={()=> require('./src/screens').HomeScreen}
+                    options={{headerTitle:"",}}
+                    />
+                    <Drawer.Screen
+                    name='Profile'
+                    getComponent={()=> require('./src/screens').ProfileScreen}
+                    options={{headerTitle:""}}
+                    />
+                </UserProvider>
             </>
         )
         :(

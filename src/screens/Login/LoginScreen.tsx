@@ -33,7 +33,7 @@ export const LoginScreen = (props: ScreenProps<"Login">) => {
   }
   return (
     <View className='flex-1'>
-      <ImageBackground source={backgroundImage} blurRadius={0} className='flex-1 justify-center items-center'>
+      <ImageBackground source={backgroundImage} blurRadius={6} className='flex-1 justify-center items-center'>
         <View className='flex-col w-[80vw] h-[50vh] rounded-md  shadow-lg items-center justify-center '>
           <Text className='text-5xl text-secondary mb-5 font-bold'> Login </Text>
           <Text className='text-3xl text-secondary mb-5' >Token:</Text>
