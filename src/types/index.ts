@@ -1,3 +1,3 @@
-export {CreatedUserResponse, CreatedUser,ErrorApi,User} from './apiResponse.types'
+export {CreatedUserResponse, CreatedUser,ErrorApi,User, UserInformation, UserInformationResponse} from './apiResponse.types'
 export {StackRoutes, ScreenProps} from './screens.types'
-export {UserContextType , UserContextDataSetterType, UserContextDataType} from './context.types'
+export {AppContextDataSetterType,AppContextDataType,AppContextType,UserContextDataSetterType,UserContextType} from './context.types'

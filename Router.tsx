@@ -2,19 +2,18 @@
 import {NavigationContainer} from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { AuthScreen} from './src/screens';
-import { UserContext, UserProvider } from './src/context';
+import { AppContext } from './src/context';
 import { useContext } from 'react';
 
 
 const Drawer  =  createDrawerNavigator()
 
 export  function Router() {
-  const {data, set} = useContext(UserContext)
+  const {data, set} = useContext(AppContext)
 
   
   return(
     <NavigationContainer>
-     
         <Drawer.Navigator initialRouteName='' screenOptions={{headerShown:false}}>
     {
         data.isLogged === true
@@ -59,14 +58,6 @@ export  function Router() {
             </>
         )
     }
-        
-
-       
-
-        
-
-         
-        
         </Drawer.Navigator>
     </NavigationContainer>
   )

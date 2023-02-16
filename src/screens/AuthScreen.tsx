@@ -1,28 +1,36 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {View,Text, Pressable, ImageBackground, Image} from 'react-native'
-import { UserContext } from '../context';
+import { AppContext } from '../context';
 import { ScreenProps} from '../types/';
 import {checkFreshStart, freshStart, getUsers} from '../storage'
 import Logo from '../../assets/imgs/logo.svg'
+import { checkServerStatus } from '../api/spaceTraders';
 const backgroundImg = require('../../assets/imgs/back2.png')
 
 
 export const AuthScreen = (props: ScreenProps<"Auth">) => {
   const {route, navigation} = props
-  const {data,set} = useContext(UserContext)
+  const {data,set} = useContext(AppContext)
+  const [serverStatus, setServerStatus] = useState("")
 
   const handleInitialLoad = async ()=>{
     const isFreshStart  =  await checkFreshStart()
-    const users = await getUsers()
+    const currentServerStatus = await checkServerStatus()
+    if(currentServerStatus !== "" ){
+        setServerStatus(currentServerStatus)
+    }
+    
     if(!data.isLogged && data.users!.length === 0 && isFreshStart ){
       await freshStart()
+      
+      
       return
     }
 
     if(!data.isLogged && data.users!.length === 0){
       return 
     }
-
+    const users = await getUsers()
     return navigation.navigate("Home")
     
   }
@@ -50,6 +58,12 @@ export const AuthScreen = (props: ScreenProps<"Auth">) => {
               className='flex w-[40vw] h-[8vh] rounded-lg  justify-center bg-p-2 mb-10 shadow-md'>
                   <Text className='text-2xl text-center text-secondary'>Register</Text> 
               </Pressable>
+
+            </View>
+
+            <View className='flex-row w-[100vw] h-[5-vh] justify-center items-center gap-4' >
+                <Text className='text-lg text-center text-secondary'>Server Status</Text>
+                <View className={`rounded-full w-5 h-5 ${serverStatus !== "" ? 'bg-pass' : 'bg-warning'}`}></View>
             </View>
             
           </View>

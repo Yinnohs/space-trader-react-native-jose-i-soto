@@ -2,18 +2,20 @@ import {users} from '../../credentials.json'
 import { CreatedUserResponse } from '../types'
 
 const endpoints = {
-    userProfile: `https://api.spacetraders.io/my/account?token=`,
-    healthcheck: `https://api.spacetraders.io/game/status`,
+    userProfile: `https://api.spacetraders.io/my/account`,
+    healhtcheck: `https://api.spacetraders.io/game/status`,
     user: `https://api.spacetraders.io/users/`
 }
 
 
 
-export const getUserinformation = async (user:string)=>{
-    const currentUser = users.find((current)=> current.username = user)
-    
+export const getUserinformation = async (token:string)=>{
     try{
-        const response = await fetch(endpoints.userProfile + currentUser?.userToken)
+        const response = await fetch(endpoints.userProfile,{
+            headers:{
+                "Authorization": "Bearer b2ef474b-5a62-4e90-8cc9-3fe7b4996dd8"
+            }
+        })
         const data = await response.json()
         return data
     }
@@ -25,7 +27,7 @@ export const getUserinformation = async (user:string)=>{
 
 export const checkServerStatus = async ()=>{
     try{
-        const response = await fetch(endpoints.healthcheck)
+        const response = await fetch(endpoints.healhtcheck)
         const data = await response.json()
         return data
     }

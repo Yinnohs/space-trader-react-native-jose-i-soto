@@ -1,6 +1,7 @@
 import { Alert } from "react-native"
 import { createUser } from "../../api/spaceTraders"
 import { addToken } from "../../storage"
+import { CreatedUserResponse } from "../../types"
 
 export const register = async (username: string) : Promise<boolean>=> {
       if(username == "" || username.length < 3){
@@ -8,7 +9,7 @@ export const register = async (username: string) : Promise<boolean>=> {
           return false
       }
 
-      const userData = await createUser(username)
+      const userData: CreatedUserResponse | {} = await createUser(username)
       if( "token"  in userData ){
          let tokenCreated = await addToken(userData.user.username, userData.token)
          if(!tokenCreated){
@@ -17,7 +18,8 @@ export const register = async (username: string) : Promise<boolean>=> {
       }
 
       if ( "error"  in userData ){
-          return false
+        Alert.alert(userData.error.message)
+        return false
       }
 
       return true

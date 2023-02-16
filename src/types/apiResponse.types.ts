@@ -18,4 +18,16 @@ export type User = {
     loans:[]
 }
 
+export type UserInformation = {
+    user:{
+        credits: number,
+        joinedAt: string,
+        shipCount: number,
+        structureCount: number,
+        username: string
+    }
+        
+}
+
 export type CreatedUserResponse = CreatedUser | ErrorApi
+export type UserInformationResponse = UserInformation | ErrorApi

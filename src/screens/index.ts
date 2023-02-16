@@ -1,4 +1,4 @@
-export { HomeScreen } from './HomeScreen'
+export { HomeScreen } from './Home/HomeScreen'
 export * from './Login'
 export { ProfileScreen } from './ProfileScreen'
 export * from './Register'

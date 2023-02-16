@@ -1,15 +1,25 @@
+import { UserInformation } from "./apiResponse.types"
 
 
-export type UserContextDataType = {
+export type AppContextDataType = {
     users?: string[]
     currentUser?: string
     userToken?: string,
     isLogged?:boolean
 }
 
-export type UserContextType ={
-    data: UserContextDataType
-    set: UserContextDataSetterType
+export type AppContextType ={
+    data: AppContextDataType
+    set: AppContextDataSetterType
 }
 
-export type UserContextDataSetterType = (data: UserContextDataType)=> void
+export type AppContextDataSetterType = (data:AppContextDataType)=> void
+
+export type UserContextDataSetterType = (userData: UserInformation)=> void
+
+export type UserContextType = {
+    userData: UserInformation
+    setUserData: UserContextDataSetterType  
+}
+
+

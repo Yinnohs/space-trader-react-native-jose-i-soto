@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useContext, useState } from 'react'
 import {View,Text, Pressable, ImageBackground} from 'react-native'
 import { InputText } from '../../components';
-import { UserContext } from '../../context';
+import { AppContext } from '../../context';
 import { addUser } from '../../storage';
 import { StackRoutes } from '../../types';
 import { register } from './register.utils';
@@ -17,7 +17,7 @@ export const RegisterScreen = (props:Props) => {
     const [username, setUsername] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
-    const {data,set} = useContext(UserContext)
+    const {data,set} = useContext(AppContext)
 
    const handleRegister = async ()=>{
     const isTokenAdded  = await register(username)
@@ -37,8 +37,8 @@ export const RegisterScreen = (props:Props) => {
           <Text className='text-2xl text-secondary my-10'> Please Introduce your username </Text>
           <InputText 
             errorMsg={errorMsg} 
-            username={username} 
-            setUsername={setUsername}  
+            data={username} 
+            setData={setUsername}  
             setErrorMsg={setErrorMsg} 
           />
           <Pressable 

@@ -79,7 +79,7 @@ export async function getUsers(){
             return []
         }
         const data = JSON.parse(stringData)
-        return data
+        return data as string[]
     } catch (error) {
         console.error(error)
         return []
