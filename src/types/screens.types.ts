@@ -4,8 +4,10 @@ export type StackRoutes = {
     Home:undefined,
     Login:undefined,
     Register:undefined,
-    Profile:undefined,
-    Auth:undefined
+    Loans:undefined,
+    Auth:undefined,
+    Logout:undefined,
+    Ships:undefined
 }
 
 export type ScreenProps<T extends keyof StackRoutes> = NativeStackScreenProps<StackRoutes, T>

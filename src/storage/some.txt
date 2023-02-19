@@ -1,9 +1,0 @@
-{
-    "token": "7d2a946e-9c2e-4cbb-9690-bd47f0a1346c",
-    "user": {
-        "username": "yinnohs",
-        "credits": 0,
-        "ships": [],
-        "loans": []
-    }
-}

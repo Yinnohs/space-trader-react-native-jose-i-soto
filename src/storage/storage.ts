@@ -1,12 +1,12 @@
 import * as KeyStorage from 'expo-secure-store'
 import Storage from '@react-native-async-storage/async-storage';
+import { err } from 'react-native-svg/lib/typescript/xml';
 
 const USERS_KEY = "UsersList"
 
 export async function addToken(username:string, token:string ){
     username = username.trim()
     username = username.split(" ").join()
-    console.log(username)
     try {
         await KeyStorage.setItemAsync(username,token)
         return true    
@@ -83,5 +83,16 @@ export async function getUsers(){
     } catch (error) {
         console.error(error)
         return []
+    }
+}
+
+export async function deleteAll(username:string){
+    try {
+        const deletedUsers = await Storage.removeItem(USERS_KEY)
+        const deletedToken = await Storage.removeItem(username)
+        return true
+    } catch (error) {
+        console.error(error)
+        return false
     }
 }
