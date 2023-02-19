@@ -27,7 +27,6 @@ export const LoginScreen = (props: ScreenProps<"Login">) => {
         users: users as string[]
        }),
        navigation.navigate("Home")
-       return
     }
     setIsLoading(false)
   }
