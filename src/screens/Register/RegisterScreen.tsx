@@ -4,7 +4,7 @@ import {View,Text, Pressable, ImageBackground} from 'react-native'
 import { InputText } from '../../components';
 import { AppContext } from '../../context';
 import { addUser, getUsers } from '../../storage';
-import { StackRoutes } from '../../types';
+import { CreatedUser, StackRoutes } from '../../types';
 import { register } from './register.utils';
 
 const registerBgImage = require('../../../assets/imgs/setsail.jpg')
@@ -20,16 +20,17 @@ export const RegisterScreen = (props:Props) => {
     const {data,set} = useContext(AppContext)
 
    const handleRegister = async ()=>{
-    const userData  = await register(username)
+    const userData  = await register(username) as CreatedUser
     const isUserAdded = await addUser(username)
     const users = await getUsers()
-    if(userData && isUserAdded){
+    if(userData || isUserAdded){
       set({users: users,
           isLogged:true, 
           userToken: userData.token, 
           currentUser:userData.user.username
         })
       navigation.navigate('Home')
+      return
     }
     setIsLoading(false)
    }
@@ -46,14 +47,15 @@ export const RegisterScreen = (props:Props) => {
             setErrorMsg={setErrorMsg} 
           />
           <Pressable 
-          className={`flex-col mt-10 w-[80vw] h-[6vh] rounded-lg shadow-lg bg-p-2 justify-center items-center`} 
+          className={`flex-col mt-10 w-[60vw] h-[8vh] rounded-lg shadow-lg bg-p-2 justify-center items-center`} 
           onPress={()=> {
             setIsLoading(true)
             handleRegister()
           }}
           disabled = {isLoading  || errorMsg !== '' ? true : false}
           >
-            <Text className='text-secondary text-xl'>Register</Text>
+            
+            <Text className='text-secondary text-2xl'>Register</Text>
           </Pressable>
         </View>
       </ImageBackground>
