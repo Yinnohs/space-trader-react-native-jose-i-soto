@@ -8,7 +8,7 @@ import { ShipImage } from "./ShipImage";
 export const ShipElement:FC<SystemShip & {src:string}> = ({type, speed, weapons, maxCargo, loadingSpeed, manufacturer, plating, puracheLocation, src})=> {
     return(
         <View className="flex-row w-80 h-60 rounded-lg justify-evenly items-center bg-p-1 gap-1 shadow-lg mb-10">
-            <Text className='text-2xl text-center text-secondary absolute -top-4 -left-1 bg-p-3 font-bold p-1'>{type}</Text>
+            <Text className='text-2xl text-center text-secondary absolute -top-1 -left-1 bg-p-3 font-bold p-1'>{type}</Text>
             <View className="flex-col w-30 h-60 justify-center items-center ">
                 <ShipImage src={src}/>
             </View>
