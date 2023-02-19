@@ -8,7 +8,7 @@ import { GetLoanButton } from "./GetLoanButton"
 export const Loan : FC<Loans> = ({amount,rate,termInDays,type}) => {
     const {userData, setUserData} = useContext(UserContext)
   return (
-    <View className="flex-col w-60 h-60 rounded-lg justify-evenly items-center bg-p-1 gap-1 shadow-lg">
+    <View className="flex-col w-60 h-60 rounded-lg justify-evenly items-center bg-p-1 gap-1 shadow-lg mb-10">
 
     <Text className='w-40 text-2xl text-center text-secondary font-bold absolute -top-5 bg-p-3'>Loan</Text>
       
