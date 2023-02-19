@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import {View,Text, Pressable, ImageBackground, Image} from 'react-native'
-import { AppContext } from '../context';
-import { ScreenProps} from '../types/';
-import {checkFreshStart, freshStart, getUsers} from '../storage'
-import Logo from '../../assets/imgs/logo.svg'
-import { checkServerStatus } from '../api/spaceTraders';
-const backgroundImg = require('../../assets/imgs/back2.png')
+import { AppContext } from '../../context';
+import { ScreenProps} from '../../types';
+import {checkFreshStart, freshStart, getUsers} from '../../storage'
+import Logo from '../../../assets/imgs/logo.svg'
+import { checkServerStatus } from '../../api/spaceTraders';
+const backgroundImg = require('../../../assets/imgs/back2.png')
 
 
 export const AuthScreen = (props: ScreenProps<"Auth">) => {
